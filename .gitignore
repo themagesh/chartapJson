@@ -1,0 +1,67 @@
+# Python compiled files
+*.py[cod]
+__pycache__/
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+*.db
+
+# If using PostgreSQL, ignore the local database dumps
+*.psql
+*.pgsql
+
+# Virtual environment
+venv/
+.env
+.venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# pipenv files
+Pipfile
+Pipfile.lock
+
+# Node.js / npm stuff (if using Node.js for frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS system files
+.DS_Store
+
+# IDE settings and project files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Static files (depending on how you handle them)
+staticfiles/
+static/
+
+# Media files
+media/
+
+# Migrations
+*/migrations/*.pyc
+*/migrations/*.py
+*/migrations/__pycache__/
+
+# Django secret keys and settings files
+secret_settings.py
+local_settings.py
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox
