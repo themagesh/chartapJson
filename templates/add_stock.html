@@ -1,0 +1,36 @@
+<div style="display: flex;
+  flex-direction: row;">
+    <div >
+        <h2>STOCK</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div >
+        <h2>VIEW STOCK</h2>
+        <ul style="flex-direction: row">
+ 
+            {% for stock in stocks %}
+            <div style="display: flex;">
+                <li>{{ stock.stockCode }}</li>
+                <li>{{ stock.companyName }}</li>
+                <li>{{ stock.industry }}</li>
+                <li>{{ stock.sector }}</li>
+                <li>{{ stock.website }}</li>
+                <!-- <li>{{ stock.about }}</li> -->
+            </div>
+            <div style="flex-direction: wrap">
+
+                <img src={{stock.singleLine}} alt="chart" style='height: 250px' >
+                <img src={{stock.upTrend}} alt="chart" style='height: 250px' >
+                <img src={{stock.downTrend}} alt="chart" style='height: 250px' >
+                <img src={{stock.lineCross}} alt="chart" style='height: 250px' >
+                <img src={{stock.lineTouch}} alt="chart" style='height: 250px' >
+            </div>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>

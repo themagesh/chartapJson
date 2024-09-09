@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import PersonForm
+from .forms import StockForm
 import json
 import os
 from django.conf import settings
@@ -25,24 +25,33 @@ def read_from_db():
     except FileNotFoundError:
         return []
 
-def add_person(request):
+def add_stock(request):
     if request.method == 'POST':
-        form = PersonForm(request.POST)
+        form = StockForm(request.POST)
         if form.is_valid():
-            person_data = {
-                'name': form.cleaned_data['name'],
-                'age': form.cleaned_data['age']
-            }
-            write_to_db(person_data)
-            return redirect('add_person')
+            stock_data = {
+                            'stockCode': form.cleaned_data['stockCode'],
+                            'companyName': form.cleaned_data['companyName'],
+                            'industry':form.cleaned_data['industry'],
+                            'sector':form.cleaned_data['sector'],
+                            'website':form.cleaned_data['website'],
+                            'about': form.cleaned_data['about'],
+                            'singleLine':form.cleaned_data['singleLine'],
+                            'upTrend':form.cleaned_data['upTrend'],
+                            'downTrend':form.cleaned_data['downTrend'],
+                            'lineCross':form.cleaned_data['lineCross'],
+                            'lineTouch':form.cleaned_data['lineTouch'],
+                        }
+            write_to_db(stock_data)
+            return redirect('add_stock')
         
     else:
-        form = PersonForm()
-        persons = read_from_db()[-2:] 
+        form = StockForm()
+    stocks= read_from_db()[-1:] 
        
-    return render(request, 'add_person.html', {'form': form,'persons': persons})
+    return render(request, 'add_stock.html', {'form': form,'stocks': stocks})
 
 def display_name(request):
-    persons = read_from_db() 
-    return render(request, 'add_person.html', {'persons': persons})
+    stocks = read_from_db() 
+    return render(request, 'add_stock.html', {'stocks': stocks})
 
