@@ -11,8 +11,9 @@ class StockForm(forms.Form):
     singleLine=forms.CharField(max_length=300)
     upTrend=forms.CharField(max_length=300)
     downTrend=forms.CharField(max_length=300)
-    lineCross=forms.CharField(max_length=300)
     lineTouch=forms.CharField(max_length=300)
+    lineCross=forms.CharField(max_length=300)
+    
 
 
 
